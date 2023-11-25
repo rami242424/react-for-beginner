@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
     <body>
+        <span>Total clicks: 0</span>
         <button id="btn">Click me</button>
     </body>
     <script>
+        let counter = 0;
         const button = document.getElementById("btn");
         function handleClick(){
-            console.log('i have been clicked');
+            // 클릭하면 counter를 가져오기
+            counter = counter + 1;
         }
         button.addEventListener('click', handleClick);
     </script>
