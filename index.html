@@ -16,7 +16,10 @@
     <script>
         // 1. const 다음 span은 rami이런식으로 아무거나 적어도 된다. but React.createElement('span') span은 html태그와 똑같은 이름이어야 한다.
         // html 없이 span 만들기
-        const span = React.createElement('span');
+        // const span = React.createElement('span');
+        // argument 추가하기('span', property(ex id, className, style), content)
+        const span = React.createElement('span', { id:"cute-span", style: { color: "red" } }, "Hello i am a span");
+
         // 2-2-1 root 가져오기
         const root = document.getElementById('root');
 
