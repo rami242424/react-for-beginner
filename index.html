@@ -13,7 +13,9 @@
             // 1. 클릭하면 counter를 가져오기
             counter = counter + 1;
             // 3. span.innerText를 새로운 counter로 두기
-            span.innerText = counter;
+            // span.innerText = counter;
+            // 4. span이 글자포함 전부 업데이트 된다.
+            span.innerText = `Total clicks: ${counter}`;
         }
         button.addEventListener('click', handleClick);
     </script>
