@@ -15,7 +15,10 @@
         const btn = React.createElement(
             'button',
             { // 버튼이 클릭될 때마다 호출 될 function을 작성할 수 있다.
-                onClick: ()=> console.log("im clicked")
+                onClick: ()=> console.log("im clicked"),
+                style: {
+                    backgroundColor: "skyblue",
+                },
             }, 
             "Click me"
         );
