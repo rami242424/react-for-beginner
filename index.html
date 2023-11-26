@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <!-- 2-1-1 span 위치 -->
         <div id="root"></div>
     </body>
-    <!-- 
-        1. react와 react-dom을 import하기
-        1-1 React JS는 어플리케이션이 아주 interactive하도록 만들어주는 library
-        1-2 React 는 엔진 : interactive한 ui를 만들 수 있게 한다.
-        1-3 React-dom 은 library 또는 package : 모든 React element들을 html body에 둘 수 있도록 해줌. (React element를 html에 두는 역할)
-    -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script>
-        // 1. const 다음 span은 rami이런식으로 아무거나 적어도 된다. but React.createElement('span') span은 html태그와 똑같은 이름이어야 한다.
-        // html 없이 span 만들기
-        // const span = React.createElement('span');
-        // argument 추가하기('span', property(ex id, className, style), content)
-        const span = React.createElement('span', { id:"cute-span", style: { color: "red" } }, "Hello i am a span");
-
-        // 2-2-1 root 가져오기
         const root = document.getElementById('root');
+        const h3 = React.createElement('h3', {
+            onMouseEnter: () => console.log("mouse enter")
+        }, "Hello i am a span");
 
-        //2. render()란 사용자에게 보여주는 것(React element를 가지고 html로 만들어 배치한다는 것)
-        //2-1 render(render할 태그, render할 태그 span을 어디에 둘것인지 위치)
-        //2-2-2 span을 root안에 둬라
-        ReactDOM.render(span, root)
+        //{프로퍼티}에 event를 넣을 수 있다.
+        const btn = React.createElement(
+            'button',
+            { // 버튼이 클릭될 때마다 호출 될 function을 작성할 수 있다.
+                onClick: ()=> console.log("im clicked")
+            }, 
+            "Click me"
+        );
+
+        // span과 btn 둘다 render 하고 싶을 때, container를 만들어 배열로 두 태그를 담는다
+        const container = React.createElement('div', null, [h3, btn]);
+        ReactDOM.render(container, root);
     </script>
 </html>
+
+<!-- 리액트js
+    const btn = React.createElement(
+            'button',
+            { 
+                onClick: ()=> console.log("im clicked")
+            }, 
+            "Click me"
+        ); "Click me");
+
+    바닐라js
+    <button id="btn">Click me</button>
+    const button = document.getElementById("btn");
+    button.addEventListener('click', handleClick);
+
+    * 바닐라js에서 'click' 이벤트 -> 리액트js에서 onClick
+ -->
