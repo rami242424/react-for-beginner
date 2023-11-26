@@ -5,26 +5,51 @@
     </body>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
         const root = document.getElementById('root');
-        const h3 = React.createElement('h3', {
-            onMouseEnter: () => console.log("mouse enter")
-        }, "Hello i am a span");
+        // 오래된 방법
+        // const h3 = React.createElement(
+        //     'h3', 
+        //     {
+        //         id: "title",
+        //         onMouseEnter: () => console.log("mouse enter"),
+        //     },
+        //     "Hello i am a span"
+        // );
 
-        //{프로퍼티}에 event를 넣을 수 있다.
-        const btn = React.createElement(
-            'button',
-            { // 버튼이 클릭될 때마다 호출 될 function을 작성할 수 있다.
-                onClick: ()=> console.log("im clicked"),
-                style: {
-                    backgroundColor: "skyblue",
-                },
-            }, 
-            "Click me"
+        //새로운 방법 = JSX (앞으로 쓰게 될 방법)
+        const Title = (
+            <h3 id="title" onMouseEnter={() => console.log("mouse enter")} 
+            >
+                Hello i am a span
+            </h3>
         );
 
-        // span과 btn 둘다 render 하고 싶을 때, container를 만들어 배열로 두 태그를 담는다
-        const container = React.createElement('div', null, [h3, btn]);
+        // 오래된 방법
+        // const btn = React.createElement(
+        //     'button',
+        //     { 
+        //         onClick: ()=> console.log("im clicked"),
+        //         style: {
+        //             backgroundColor: "skyblue",
+        //         },
+        //     }, 
+        //     "Click me"
+        // );
+
+        //새로운 방법 = JSX (앞으로 쓰게 될 방법)
+        const Button = (
+            <button 
+                onClick={()=> console.log("im clicked")}
+                style={{
+                    backgroundColor:"skyblue"
+                }}
+            >
+                Click me
+            </button>
+        );
+        const container = React.createElement('div', null, [Title, Button]);
         ReactDOM.render(container, root);
     </script>
 </html>
