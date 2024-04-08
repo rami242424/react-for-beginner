@@ -11,27 +11,45 @@
 </body>
 <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"></script>
-<script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
     const root = document.getElementById("root");
-    const h3 = React.createElement(
-        "h3", 
-        {
-            onMouseEnter: () => console.log("mouse enter"),
-        },
-        "Hello, i'am a span"
-    );
-    const btn = React.createElement(
-        "button", 
-        {
-            onClick: () => console.log("i am clicked"),
-            style: {
-                backgroundColor: "red",
-            }
-        },
-        "Click me"
-    );
+    const Title = 
+        <h3 
+            id= "title" 
+            onMouseEnter={() => console.log("mouse enter")}
+        >
+            Hello, i'am a title
+        </h3>
+    // const h3 = React.createElement(
+    //     "h3", 
+    //     {
+    //         onMouseEnter: () => console.log("mouse enter"),
+            //    style.background.color = "red";
+    //     },
+    //     "Hello, i'am a h3"
+    // );
+    const Button = 
+        <button 
+            style={{
+                backgroundColor: "tomato",
+            }}
+            onClick={() => console.log("i am clicked")}
+        >
+            Click me
+        </button>
+    // const btn = React.createElement(
+    //     "button", 
+    //     {
+    //         onClick: () => console.log("i am clicked"),
+    //         style: {
+    //             backgroundColor: "red",
+    //         }
+    //     },
+    //     "Click me"
+    // );
     // ReactDOM.render(span, root); // span을 사용자에게 보여준다.
-    const container = React.createElement("div", null, [h3, btn]);
+    const container = React.createElement("div", null, [Title, Button]);
     ReactDOM.render(container, root);
 </script>
 </html>
