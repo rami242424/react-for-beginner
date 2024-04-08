@@ -14,15 +14,30 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = 
+    const Title = () => (
         <h3 
             id= "title" 
             onMouseEnter={() => console.log("mouse enter")}
         >
             Hello, i'am a title
         </h3>
+    )
+    /* 위 코드 원래 모습 */
+    /*
+    function Title(){
+        return (
+            <h3 
+            id= "title" 
+            onMouseEnter={() => console.log("mouse enter")}
+            >
+                Hello, i'am a title
+            </h3>
+        );
+    }
+    */
 
-    const Button = 
+
+    const Button = () =>(
         <button 
             style={{
                 backgroundColor: "tomato",
@@ -31,12 +46,15 @@
         >
             Click me
         </button>
+    )
 
-    const Container =
+    const Container= () =>(
+        // 컴포넌트의 첫글자는 무조건 "대문자"
         <div>
-            Title
-            Button
+            <Title />
+            <Button />
         </div>
-    ReactDOM.render(Container, root);
+    );
+    ReactDOM.render(<Container />, root);
 </script>
 </html>
