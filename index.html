@@ -16,20 +16,11 @@
     const root = document.getElementById("root");
     
     function App(){
-        // counter : 우리가 담으려는 data 값
-        // modifier : 이 data값을 바꿀때 사용할 요소
-        /*
-        const [counter, modifier] = React.useState(0);
-        const onClick = () => {
-            // counter = counter + 1;
-            // console.log(counter);
-            modifier(100);
-        };
-        */
-        // 보통 counter(자기가 정할 수 있음), setCounter 이런식으로 사용함
         const [counter, setCounter] = React.useState(0);
         const onClick = () => {
-            setCounter(counter + 1);
+            // setCounter(counter + 1); // 아래코드와 같음
+            setCounter((current) => current + 1);
+
         };           
 
         return(
