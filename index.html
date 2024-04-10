@@ -14,18 +14,20 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
 
-    function Btn({ text , big}){
+    function Btn({ text, changeValue }){
     // function Btn(props){
         // console.log(props);
-        console.log(text, big);
+        // console.log(text, big);
+        console.log(text, "was rendered");
         return (
-            <button style={{
-                backgroundColor : "tomato",
-                color : "white",
-                padding : " 10px 20px",
-                border : 0,
-                borderRadius : 10,
-                fontSize : big ? 18 : 2
+            <button 
+                onClick = {changeValue}
+                style={{
+                    backgroundColor : "tomato",
+                    color : "white",
+                    padding : " 10px 20px",
+                    border : 0,
+                    borderRadius : 10,
                 }}>
                 {/*{props.text}*/}
                 {text}
@@ -35,11 +37,16 @@
     function ConfirmBtn(){
         return <button>Confirm</button>;
     }
+    const MemorizesBtn = React.memo(Btn);
     function App(){
+        const [value, setValue] = React.useState("Save Change");
+        const changeValue = () => setValue("Revert Changes");
         return(
             <div>
-                <Btn text="Save Change" big={true}/>
-                <Btn text="Continue"/>
+                {/*<Btn text={value} changeValue={changeValue} />
+                <Btn text="Continue"/>*/}
+                <MemorizesBtn text={value} changeValue={changeValue} />
+                <MemorizesBtn text="Continue"/>
             </div>
             );
         }
