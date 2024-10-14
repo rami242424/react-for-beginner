@@ -23,6 +23,7 @@
       };
       return (
         <div>
+          <h3>Minutes To Hours</h3>
           <div>
             <label htmlFor="minutes">Minutes</label>
             <input
@@ -51,7 +52,49 @@
       );
     }
     function KmToMiles() {
-      return <h3>Km to Miles</h3>;
+      const [unit, setUnit] = React.useState(0);
+      const [reversed, setReversed] = React.useState(false);
+      const onChange = (event) => {
+        setUnit(event.target.value);
+      };
+      const reset = () => {
+        setUnit(0);
+      };
+      const onFlip = () => {
+        reset();
+        setReversed((current) => !current);
+      };
+      return (
+        <div>
+          <h3>Km to Miles</h3>
+          <div>
+            <label htmlFor="km">Km</label>
+            <input
+              id="km"
+              placeholder="Km"
+              type="number"
+              onChange={onChange}
+              value={reversed ? unit * 1.60934 : unit}
+              disabled={reversed === true}
+            />
+          </div>
+          <div>
+            <label htmlFor="miles">Miles</label>
+            <input
+              id="miles"
+              placeholder="Miles"
+              type="number"
+              onChange={onChange}
+              value={reversed ? unit : unit * 0.621374}
+              disabled={reversed === false}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>
+            {reversed ? "Turn back" : "reversed"}
+          </button>
+        </div>
+      );
     }
     function App() {
       const [index, setIndex] = React.useState("x");
@@ -59,7 +102,7 @@
         // console.log(event.target.value);
         setIndex(event.target.value);
       };
-      console.log("render w/", index);
+      //   console.log("render w/", index);
       return (
         <div>
           <h3>Super Converter</h3>
