@@ -25,14 +25,14 @@
       );
     }
     Btn.propTypes = {
-      text: PropTypes.string,
+      text: PropTypes.string.isRequired,
       fontSize: PropTypes.number,
     };
     function App() {
       return (
         <div>
           <Btn text="Save Changes" fontSize={18} />
-          <Btn text={14} fontSize="continue" />
+          <Btn text="continue" />
         </div>
       );
     }
