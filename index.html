@@ -12,11 +12,8 @@
     function App() {
       const [counter, setCounter] = React.useState(0);
       const onClick = () => {
-        setCounter(counter + 1); // ()안에 값으로 업데이트하고, 리렌더링한다.
+        setCounter((current) => current + 1);
       };
-      console.log("rendered");
-      console.log(counter);
-
       return (
         <div>
           <h3>Total clicks : {counter}</h3>
