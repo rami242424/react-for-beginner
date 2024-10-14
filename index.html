@@ -12,14 +12,10 @@
     function App() {
       const [counter, setCounter] = React.useState(0);
       const onClick = () => {
-        // counter = counter + 1;
-        // console.log(counter);
-
         setCounter(counter + 1); // ()안에 값으로 업데이트하고, 리렌더링한다.
-        // 위에 setCounter 코드 하나로 아래 2가지 코드가 실행된다.
-        // counter = 1004;
-        // ReactDOM.render(<App />, root);
       };
+      console.log("rendered");
+      console.log(counter);
 
       return (
         <div>
